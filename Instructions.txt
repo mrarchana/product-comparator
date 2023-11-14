@@ -1,0 +1,6 @@
+cd /Downloaded_folder/product-comparator
+npm i
+cd product-comparator
+npm i create-react-app
+cd ..
+npm run dev

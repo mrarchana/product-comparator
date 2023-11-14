@@ -1,0 +1,270 @@
+* {
+  background-color: rgb(22, 20, 27);
+  font-family: "Calibri";
+}
+#root{
+  position:absolute;
+  height: 100%;
+  width: 100%;
+}
+.App{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.btn {
+  position: relative;
+
+  width: 5%;
+  height: 35px;
+  left: 35%;
+  background-color: silver;
+  border-color: silver;
+}
+.icon{
+  background-color: silver;
+}
+.title {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(11, 11, 27);
+  color: beige;
+}
+.title-off{
+  margin: 0;
+  background-color:white; 
+  color: rgb(34, 29, 29);
+}
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.nav-container {
+  background-color: rgb(11, 11, 27);
+  width: 100%;
+}
+.nav {
+  display: flex;
+  padding: 20px 20px;
+  background-color: rgb(11, 11, 27);
+  width: 50%;
+  justify-content: space-between;
+}
+.img {
+  height: 200px;
+  width: 150px;
+  margin-top: 10px;
+}
+
+.img-off{
+  position: relative;
+  height: 150px;
+  width: 150px;
+  
+}
+.container-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dropdown {
+  height: 40px;
+  width: 400px;
+  background-color: blue;
+  color: azure;
+  border: 1px solid rgb(255, 255, 255);
+  margin-top: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+}
+.price {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: bolder;
+  color: rgb(14, 36, 238);
+}
+.price-off{
+  margin: 0;
+  background-color:white;
+  color:rgb(34, 29, 29) ;
+}
+.visit {
+  text-decoration: none;
+  background-color: blue;
+  color: azure;
+  padding: 10px 30px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+.visit:hover {
+  background-color: rgba(23, 19, 231, 0.705);
+}
+.visit-off{
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 14rem;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+}
+.home {
+  margin-top: 15px;
+}
+.name{
+  position: relative;
+  left: 30%;
+  width: 30%;
+  margin-bottom: 5%;
+}
+.email{
+  position: relative;
+  left: 30%;
+  width: 30%;
+  margin-bottom: 5%;
+}
+.feedback-container{
+  position: relative;
+  top:10%;
+  height: 100%;
+  width: 100%;
+}
+.feedback-form{
+  position: relative;
+  height: 100%;
+}
+.feedback-submit{
+  position: relative;
+  top:25%;
+  left: 28%;
+  background-color:  #d1d1d1;
+  border-radius: 10px;
+  height: 5%;
+}
+.offer-container{
+  
+  padding: 3rem 0;
+}
+.offer-title{
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+  margin: 0;
+  color:#d5d5d5;
+}
+.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+.scroll-title{
+  color: rgb(128, 121, 146);
+  font-size: large;
+}
+.scrl_item{
+  display: inline-block;
+  background-color: white;
+  border: 1px solid rgb(145, 138, 138);
+  padding: 0 20px 0 20px;
+}
+.feedback-name{
+position: relative;
+left: 25%;
+color: white;
+}
+.feedback-email{
+  position: relative;
+left: 25%;
+color: white;
+}
+.feedback{
+  position: relative;
+left: 25%;
+color: white;
+}
+::-webkit-scrollbar {
+  height: 4px;              /* height of horizontal scrollbar */
+  width: 6px;               /* width of vertical scrollbar */
+  border: 1px solid #d5d5d5;
+}
+.loader {
+  border: 16px solid #f3f3f3;
+  position: absolute;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  top: 40%;
+  left: 50%;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#foot {
+  text-decoration: none;
+  color: rgb(169, 172, 175);
+  margin-top: 5px;
+}
+#foot:hover {
+  color: rgba(14, 127, 219, 0.925);
+}
+#feedback{
+  position: absolute;
+  left: 33%;
+  width: 40%;
+  height: 20%;
+}
+#home {
+  color: white;
+  background-color: rgb(11, 11, 27);;
+  margin-right: 10px;
+  text-decoration: none;
+}
+#search{
+  position: relative;
+  left: 35%;
+  width: 25%;
+}
+option {
+  background-color: rgb(11, 190, 235);
+}
+hr {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: white;
+}
+footer {
+  display: flex;
+  color: white;
+  justify-content: center;
+  height: 100%;
+}
+input {
+  width: 10%;
+  height: 30px;
+}
+input[type="text"],input[type='email'],
+textarea {
+  background-color: #d1d1d1;
+}
+td {
+  border: 1px solid white;
+  width: 10px;
+}
+th {
+  border: 1px solid white;
+  font-size: 30px;
+  padding: 10px;
+  color: rgba(131, 6, 248, 0.726);
+}
+table {
+  width: 100%;
+}
