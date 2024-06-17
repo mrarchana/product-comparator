@@ -5,6 +5,7 @@ var deasync = require("deasync");
 const router = express.Router();
 var flip_res = [];
 var amaz_res = [];
+process.env["NODE_OPTIONS"] = '--no-force-async-hooks-checks'
 function scrap_flipkart(result) {
   var temp = result.split(" ");
   var flip_link = "https://www.flipkart.com/search?q=";
@@ -12,16 +13,23 @@ function scrap_flipkart(result) {
   for (var i = 1; i < temp.length; i++) {
     flip_link = flip_link + "+" + temp[i];
   }
-  request(flip_link, (error, response, html) => {
+  const options = {
+    url: flip_link,
+    headers: {
+      Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    }};
+  request(options, (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
-      $("._2kHMtA").each((i, el) => {
-        const title = $(el).find("._4rR01T").html();
-        const price = $(el).find("._30jeq3").html();
-        const img = $(el).find("._396cs4").attr().src;
-        const link = $(el).find("._1fQZEK").attr().href;
+      $(".cPHDOP.col-12-12").each((i, el) => {
+        try{
+        const title = $(el).find(".KzDlHZ").html();
+        const price = $(el).find("._4b5DiR").html();
+        const img = $(el).find(".DByuf4").attr().src;
+        const link = $(el).find(".CGtC98").attr().href;
         const f_link = "https://www.flipkart.com" + link;
         flip_res.push({ title, price, img, f_link });
+        }catch(e){}
       });
     }
   });
@@ -37,20 +45,29 @@ function scrap_amazon(result) {
   for (var i = 1; i < temp.length; i++) {
     amaz_link = amaz_link + "+" + temp[i];
   }
-  request(amaz_link, (error, response, html) => {
+  const options = {
+    url: amaz_link,
+    headers: {
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+      'Accept-Language': 'en-US,en;q=0.9'
+    },
+    encoding: 'utf8'
+};
+  request(options, (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
       $(
-        ".s-card-container.s-overflow-hidden.aok-relative.puis-include-content-margin.s-latency-cf-section.s-card-border"
+        ".s-result-item"
       ).each((i, el) => {
+        try{
         const title = $(el)
           .find(".a-size-medium.a-color-base.a-text-normal")
           .html();
-        const price = $(el).find(".a-price").find(".a-price-whole").html();
+        const price = $(el).find(".a-price").find(".a-offscreen").html();
         const img = $(el).find(".s-image").attr().src;
         const link = $(el)
           .find(
-            ".a-size-base.a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal"
+            ".a-link-normal"
           )
           .attr();
         var a_link;
@@ -60,6 +77,7 @@ function scrap_amazon(result) {
         if (title != null && price != null) {
           amaz_res.push({ title, price, img, a_link });
         }
+      }catch(e){}
       });
     }
   });
